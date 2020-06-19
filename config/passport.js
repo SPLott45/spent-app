@@ -1,11 +1,11 @@
 const passport = require('passport');
-const user = require('../models/user');
+const User = require('../models/user');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_SECRET,
-    callbackURL: process.env.GOOGL_CALLBACK
+    callbackURL: process.env.GOOGLE_CALLBACK
 },
 function(accessToken, refreshToken, profile, cb) {
     User.findOne({'googleId': profile.id}, function(err, user) {
@@ -14,7 +14,7 @@ function(accessToken, refreshToken, profile, cb) {
             return cb(null, user);
         } else {
         //We have a new user via OAUTH!
-        const newUser = new user({
+        const newUser = new User({
             name: profile.displayName,
             email: profile.emails[0].value,
             googleId: profile.id

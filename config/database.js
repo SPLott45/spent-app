@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 //Connect to DB
-mongoose.connect('mongodb://localhost/spentDB', {
+mongoose.connect(process.env.DATABASE_URL || 'mongodb://localhost/spentDB', {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true 

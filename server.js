@@ -1,7 +1,6 @@
 //Require node module(s)
 const express = require ('express');
 const morgan = require('morgan');
-const session = require('express-session');
 const passport = require('passport');
 const port = 3000;
 
@@ -21,30 +20,31 @@ spentApp.set('view engine', 'ejs');
 //Require routes
 const indexRouter = require('./routes/index'); //renders home.ejs
 const transactionsRouter = require('./routes/transactions');
-const usersRouter = require('.routers/users');
+const usersRouter = require('./routes/users');
 
 //Mount middleware (spentApp.use)
 spentApp.use(morgan('dev'));
+spentApp.use(express.json());
 spentApp.use(express.static('public'));
 spentApp.use(express.urlencoded({ extended: true }))
-spentApp.use(passport.initialize());
-spentApp.use(passport.session());
+
+const session = require('express-session');
 spentApp.use(session({
     secret: 'SPL',
     resave: false,
     saveUninitialized: true
 }));
 
+//Mount passport middleware
+spentApp.use(passport.initialize());
+spentApp.use(passport.session());
+
 //Mount the routes (spentApp.use)
 spentApp.use('/', indexRouter);
 spentApp.use('/transactions', transactionsRouter);
 //spentApp.use('/dashboard')
 //spentApp.use('/categories', categoriesRouter);
-spentApp.use('/users', usersRouter)
-
-spentApp.get('/transactions', function(req, res) {
-    res.render('transactions/index');
-});
+spentApp.use('/', usersRouter)
 
 //Tell the web app to listen for HTTP requests 
 spentApp.listen(port, function() {
