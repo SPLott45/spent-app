@@ -4,13 +4,8 @@ const categoriesCtrl = require('../controllers/categories');
 
 //GET /categories/new
 router.get('/new', categoriesCtrl.new);
-
-router.post('/', categoriesCtrl.create);
-
 router.get('/', categoriesCtrl.index);
 
-
-
-
+router.post('/', categoriesCtrl.create);
 
 module.exports = router;

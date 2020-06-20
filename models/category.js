@@ -1,5 +1,6 @@
 //Require mongoose
 const mongoose = require('mongoose'); 
+const categories = require('../controllers/categories');
 const Schema = mongoose.Schema;
 
 const transactionSchema = new Schema({
@@ -20,3 +21,4 @@ const categorySchema = new Schema({
 
 //Compile the schema into a model and export it
 module.exports = mongoose.model('Category', categorySchema);
+

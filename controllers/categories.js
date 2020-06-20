@@ -1,4 +1,6 @@
 const Category = require('../models/category');
+const category = require('../models/category');
+const { request } = require('express');
 
 module.exports = {
     new: newCategory,
@@ -11,14 +13,11 @@ function newCategory(req, res) {
 };
 
 function create(req, res) {
-    req.body.name;
 
    const category = new Category(req.body);
-   
+
    category.save(function(err) {
-       if (err) return res.render('categories/new');
-       console.log(category);
-       res.redirect('/categories');
+       res.redirect('/dashboard');
    });
 };
 
@@ -29,3 +28,5 @@ function index(req, res) {
         });
     });
 };
+
+

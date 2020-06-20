@@ -3,7 +3,7 @@ const express = require ('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const passport = require('passport');
-const port = 3000;
+const port = process.env.PORT || '3000';
 
 //Load environment variable
 require('dotenv').config();
@@ -29,7 +29,12 @@ spentApp.use(morgan('dev'));
 spentApp.use(express.json());
 spentApp.use(express.static('public'));
 spentApp.use(methodOverride('_method'));
-spentApp.use(express.urlencoded({ extended: true }))
+spentApp.use(express.urlencoded({ extended: false }))
+
+spentApp.use(function(req, res, next) {
+    console.log("Spent App moving forward");req.time = new Date().toLocaleTimeString();
+    next();
+});
 
 const session = require('express-session');
 spentApp.use(session({

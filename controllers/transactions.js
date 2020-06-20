@@ -30,6 +30,9 @@ function create(req, res) {
 };
 
 function index(req, res) {
+
+    const transaction = new Transaction(req.body);
+    
     Transaction.find({}, function(err, transactions) {
         res.render('transactions/index', {
             transactions

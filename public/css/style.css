@@ -1,12 +1,26 @@
+body {
+    background-color: rebeccapurple;
+    color: white
+};
+
+.link {
+    color: white
+}
+
+.banner {
+    display: inline-flexbox
+}
+
 .delete-form {
     display: inline-block;
     margin-right: 10x;
-}
+};
 
 .delete-form button {
     color: red;
-}
+};
 
 li {
     list-style: none;
-}
+};
+
