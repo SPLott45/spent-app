@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="/css/style.css">"
 </head>
 <body>
-    <h1>Spent App - My Transactions</h1>
+    <h1>Spent App - Your Transactions</h1>
+    <ul>
+        <%transactions.forEach(function(transaction, idx) { %>
+        <li>
+            <a href="/transactions/<%= idx %>"><%= transaction.text %></a>
+        </li>
+    <% }) %>
+    </ul>
 </body>
+
+<% transactions.forEach(function(t, idx)) { %>
+<li>
+    <form action="/transactions/<%= idx %>?_method=DELETE"
+        class="delete-transaction" method="POST">
+    <button type="submit">X</button>
+</form>
+</li>
+}
+</section>
 </html>

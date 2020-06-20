@@ -35,10 +35,6 @@ router.get('/dashboard', function(req, res) {
     res.render('dashboard');
 });
 
-//router.post()
 
-//router.put()
-
-//router.delete()
 
 module.exports = router;

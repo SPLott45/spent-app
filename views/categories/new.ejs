@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href="/css/style.css"/>
+    <title>Add New Spending Category</title>
+</head>
+<body>
+    <h2>Select Spending Category</h2>
+    <form action="/categories" method="POST">
+    <select name="categories" size="5" multiple>
+        <option value="housing">Housing/Rent</option>
+        <option value="food">Food</option>
+        <option value="utilities">Utilities</option>
+        <option value="transportation">Transportation</option>
+        <option value="other">Other/Miscellaneous</option>
+    </select>
+    <input type="submit" value="Add Spending Categories">
+    </form>
+</body>
+</html>

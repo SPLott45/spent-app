@@ -1,0 +1,12 @@
+.delete-transaction {
+    display: inline-block;
+    margin-right: 10x;
+}
+
+.delete-transaction button {
+    color: red;
+}
+
+li {
+    list-style: none;
+}

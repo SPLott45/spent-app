@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="/css/style.css">"
 </head>
 <body>
-    
+    <h1>Your Categories</h1>
+    <table>
+        <thead>
+            <th>Your Current Categories Are:</th>
+        </thead>
+        <tbody>
+            <% categories.forEach(category => { %>
+                <tr>
+                    <td><%= category.name %></td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
 </html>

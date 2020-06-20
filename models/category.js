@@ -1,18 +1,26 @@
 //Require mongoose
 const mongoose = require('mongoose'); 
-const transactions = require('../controllers/transactions');
 const Schema = mongoose.Schema;
-const transactionSchema = require('../models/transaction');
+
+const transactionSchema = new Schema({
+    merchant: String,
+    amount: Number,
+    description: String,
+}, {
+    timestamps: true
+});
 
 const categorySchema = new Schema({
-    _id: Schema.Types.ObjectId,
     name: String,
-    amount: Number,
-    transactions: [transactionSchema],
-    createdBy: Schema.Types.ObjectId,
-    createdAt: Date,
-    updatedAt: Date
-})
+    transactions: [transactionSchema]
+}, {
+    timestamps: true
+});
+
 
 //Compile the schema into a model and export it
 module.exports = mongoose.model('Category', categorySchema);
+module.exports = {
+    getAll,
+    getOne
+};
