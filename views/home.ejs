@@ -6,13 +6,23 @@
     <title>Spent App - Home Page</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <h1>Spent App - Home Page</h1>
+<body class="homepage">
+    <h1 class="banner">spent</h1>
+    <h1 class="banner">Company</h1>
+    <h1 class="banner">How It Works</h1>
+
     <% if (user) { %>
         <a href="/logout">Logout</a>
     <% } else { %>
         <a href="/auth/google">Login with Google</a>
     <% } %>
     
+    <h2>Spent is an easy-to-use app that helps busy professionals track their daily spendign.</h2>
+
+    <h3>Step 1 - Customize your spending/budget categories</h3>
+
+    <h3>Step 2 - Track each transaction (debit card, credit card, and even cash)</h3>
+
+    <h3>Step 3 - Keep up with how much you've spent</h3>
 </body>
 </html>

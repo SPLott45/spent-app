@@ -7,21 +7,37 @@ const Category = require('../models/category');
 
 
 module.exports = {
-    index,
+    new: newTransaction,
     create,
+    index,
     show,
     delete: deleteTransaction
 };
 
-
-//Index Controller
-function index(req, res) {
-    res.render('transactions/index', {
-        transaction: Transaction.getAll()
-    })
+function newTransaction(req, res) {
+    res.render('transactions/new');
 };
 
 function create(req, res) {
+
+    const transaction = new Transaction(req.body);
+
+    transaction.save(function(err) {
+        if (err) return res.render('transactions/new');
+        console.log(transaction);
+        res.redirect('transactions/index');
+    });
+};
+
+function index(req, res) {
+    Transaction.find({}, function(err, transactions) {
+        res.render('transactions/index', {
+            transactions
+        });
+    });
+};
+
+function create (req, res) {
     Category.findById(req.params.id, function(err, category) {
         category.transactions.push(req.body);
         category.save(function(err) {
@@ -30,17 +46,14 @@ function create(req, res) {
     });
 };
 
-Transaction.find({}, function(err, transactions) {
-    console.log(transactions)
-});
-
-Transaction.findByIdAndUpdate()
 function show(req, res) {
     res.render('transactions/show', {
-        transaction: Transaction.getOne(req.params.id)
-    })
-}
+        transaction: Transaction.getOne(req.params.id),
+        transactionNum: parseInt(req.params.id) + 1
+    });
+};
+
 function deleteTransaction(req, res) {
-    Transaction.deleteOne(req.params.sid);
+    Transaction.deleteOne(req.params.id);
     res.redirect('/transactions/index');
 };

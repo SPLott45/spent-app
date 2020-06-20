@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spent App - My Transactions</title>
-    <link rel="stylesheet" href="/css/style.css">"
+    <title>My Transactions</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1>Spent App - Your Transactions</h1>
-    <ul>
-        <%transactions.forEach(function(transaction, idx) { %>
-        <li>
-            <a href="/transactions/<%= idx %>"><%= transaction.text %></a>
-        </li>
-    <% }) %>
-    </ul>
-</body>
-
-<% transactions.forEach(function(t, idx)) { %>
-<li>
-    <form action="/transactions/<%= idx %>?_method=DELETE"
-        class="delete-transaction" method="POST">
-    <button type="submit">X</button>
-</form>
-</li>
-}
-</section>
-</html>
+    <h1>Your Transactions</h1>
+    <table>
+        <thead>
+            <th>Merchant:</th>
+            <th>Amount</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <ul>
+                <%transactions.forEach(function(transaction, idx) { %>
+                <li>
+                    <form action="transactions/index/<%= idx %>?_method=DELETE"
+                        class="delete-form" method="POST">
+                    <button type="submit">X</button>
+                    </form>
+                    <a href="/transactions/show/<%= idx %>"><%= transaction.text %></a>
+                </li>
+            <% }) %>
+            </ul>
+        </tbody>
+    </table>
+    </body>
+    
+    <a href="transactions/new">Create New Transaction</button>
+    <a href="/dashboard">Back to My Dashbard</a>
+    </html>
+    
+    

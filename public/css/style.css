@@ -1,9 +1,9 @@
-.delete-transaction {
+.delete-form {
     display: inline-block;
     margin-right: 10x;
 }
 
-.delete-transaction button {
+.delete-form button {
     color: red;
 }
 

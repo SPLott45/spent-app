@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Add New Transaction</title>
+</head>
+
+<body class="newtransaction">
+    <h1 class="banner">spent</h1>
+    <h1 class="banner">Company</h1>
+    <h1 class="banner">How It Works</h1> 
+    
+    <h2>Add New Transaction</h2>
+    <form action="transactions/index" method="POST">
+        <label>Merchant:
+            <input type="text" name="merchant">
+        </label>
+        <label>Amount:
+            <input type="number" name="amount">
+        </label>
+        <label>Description:
+            <input type="text" name="description">
+        </label>
+        <input type="submit" value="Add Transaction">
+    </form>
+</body>
+</html>
